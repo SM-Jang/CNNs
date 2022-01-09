@@ -1,9 +1,9 @@
 import torch
 import torch.nn as nn
-
+from torchsummary import summary
 
 class AlexNet(nn.Module):
-    def __init__(self, num_classes):
+    def __init__(self, num_classes=1000):
         """
         layers: 5 * Conv + 3 * FC
         output: number of classes
@@ -76,3 +76,11 @@ class AlexNet(nn.Module):
         x = x.view(-1, 256*6*6)
         x = self.classifier(x)
         return x
+
+    
+if __name__=='__main__':
+        
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    model = AlexNet().to(device)
+    summary(model, input_size=(3, 227, 227))
+    
