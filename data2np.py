@@ -5,7 +5,7 @@ import torchvision.transforms as transforms
 from torchvision import datasets
 import os
 
-name = 'stl'
+name = 'cifar'
 
 def unpickle(file):
     
@@ -32,10 +32,10 @@ if name == 'cifar':
     test_x = unpickle(test_path)['data']
     test_y = np.array(unpickle(test_path)['labels'])
 
-    np.save('./cifar-10-batches-py/train_data.npy', train_x)
-    np.save('./cifar-10-batches-py/train_labels.npy', train_y)
-    np.save('./cifar-10-batches-py/test_train.npy', test_x)
-    np.save('./cifar-10-batches-py/train_test.npy', test_y)
+    np.save('../dataset/cifar-10-batches-py/train_data.npy', train_x)
+    np.save('../dataset/cifar-10-batches-py/train_labels.npy', train_y)
+    np.save('../dataset/cifar-10-batches-py/test_data.npy', test_x)
+    np.save('../dataset/cifar-10-batches-py/test_labels.npy', test_y)
 
 if name == 'stl':
 
