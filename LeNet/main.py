@@ -67,6 +67,7 @@ def train():
                 print("Training process [{}/{}] | Loss: {:.4f} | Accuracy: {:.2f}".format(idx+1, train_loader.__len__(), loss.item(), acc))
             
         print('Epoch {}/{}\t Loss {:.4f}\t Accuracy {:.2f}'.format(epoch+1,num_epochs,sum(losses)/len(losses),sum(num_corrects)/len(num_corrects)), end='\n\n')
+        torch.save(model.state_dict(), 'checkpoint/Lenet.pt')
 
 
         
