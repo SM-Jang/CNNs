@@ -12,18 +12,18 @@ C5: 120 feature maps, kernel_size: 5x5
 """
 
 class LeNet(nn.Module):
-    def __init__(self):
+    def __init__(self, in_channel, num_classes):
         super(LeNet, self).__init__()
         
         self.sigmoid = nn.Sigmoid()
-        self.c1 = nn.Conv2d(in_channels=1, out_channels=6, kernel_size=(5,5), stride=(1,1), padding=0)
+        self.c1 = nn.Conv2d(in_channels=in_channel, out_channels=6, kernel_size=(5,5), stride=(1,1), padding=0)
         self.s2 = nn.AvgPool2d(kernel_size=(2,2), stride=(2,2))
         self.c3 = nn.Conv2d(in_channels=6, out_channels=16, kernel_size=(5,5), stride=(1,1), padding=0)
         self.s4 = nn.AvgPool2d(kernel_size=(2,2), stride=(2,2))
         self.c5 = nn.Conv2d(in_channels=16, out_channels=120, kernel_size=(5,5), stride=(1,1), padding=0)
         
         self.fc1 = nn.Linear(120, 84)
-        self.fc2 = nn.Linear(84, 10)
+        self.fc2 = nn.Linear(84, num_classes)
         
     
     def forward(self, x):
@@ -38,6 +38,6 @@ class LeNet(nn.Module):
         return x
     
     
-x = torch.randn(64, 1, 32, 32)
-model = LeNet()
-print(model(x).shape)
+# x = torch.randn(64, 1, 32, 32)
+# model = LeNet()
+# print(model(x).shape)
