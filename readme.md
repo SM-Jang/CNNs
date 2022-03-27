@@ -10,4 +10,9 @@ Pytorch를 이용하여 deep learning을 실습
 저명한 Convolutional Neural Network를 구현
 
 - LeNet
-- VGG
+- VGG[논문](https://arxiv.org/abs/1409.1556)
+"Simple but effective"
+- GoogLeNet[논문](https://arxiv.org/abs/1409.4842)
+"we need to go deeper!"
+1x1 conv are used to compute reductions before the expansive 3x3 and 5x5
+
